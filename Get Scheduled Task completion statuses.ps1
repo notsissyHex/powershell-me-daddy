@@ -1,0 +1,2 @@
+## Replace Export-CSV with Out-GridView to see in real time
+Get-WinEvent -FilterHashtable @{ LogName = 'Microsoft-Windows-TaskScheduler/Operational'; Id = 201 } | Select TimeCreated,@{n='Task';e={$_.Properties[0].Value}},@{n='ExitCode';e={$_.Properties[3].Value}} | export-csv "Scheduled task statuses.csv" -NoTypeInformation
